@@ -10,7 +10,7 @@
             This is the first web application I built using Laravel. I hope you like it.
         </p>
         <p>
-            <a class="btn btn-lg btn-success" href="#" role="button">Sign up now</a>
+            <a class="btn btn-lg btn-success" href="{{ route('signup') }}" role="button">Signup now</a>
         </p>
     </div>
 @stop
