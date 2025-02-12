@@ -49,9 +49,14 @@ This is a simple blog application built with Laravel 9.1
     - npm run watch-poll 监听资源文件变化, 并编译资源文件, Laravel Mix 会自动编译资源文件, 运行这个的时候可能会提示需要安装
       resolve-url-loader 依赖
     - yarn add resolve-url-loader@^5.0.0 --dev 安装 resolve-url-loader 依赖, 安装完成后重新运行 npm run watch-poll
+    - git checkout main 切换到主分支
+    - git status 查看当前仓库状态
+    - git clear -df 因为我们在使用 npm run watch-poll 所以我们切换到主分支的时候需要清除掉编译后的资源文件
+    - git merge filling-layout-style 合并 filling-layout-style 分支到主(main)分支
+    - git push origin main 推送到远程仓库, 或者 git push
 - 因为我们使用了 Sass、NPM、Yarn、Laravel Mix 等工具来构成一套完整的前端工作流, 所以需要安装 Node.js, 安装 Node.js 会自动安装
   npm, 但是我们推荐使用 yarn 代替 npm
 - 下载 Node.js 和 yarn
-  - Node.js: https://nodejs.org/en/
-  - MacOS # Download and install Node.js: brew install node@22
-  - Yarn: https://classic.yarnpkg.com/lang/en/docs/install
+    - Node.js: https://nodejs.org/en/
+    - MacOS # Download and install Node.js: brew install node@22
+    - Yarn: https://classic.yarnpkg.com/lang/en/docs/install
