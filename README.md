@@ -75,3 +75,5 @@ This is a simple blog application built with Laravel 9.1
         - exit 退出 tinker 环境
     - php artisan migrate:refresh 重置数据库(注意: 这个命令会删除数据库中的所有数据, 所以请谨慎使用,
       我们这个地方使用是因为我们需要重置掉数据库中的测试数据)
+    - composer require overtrue/laravel-lang:~6.0 安装 Laravel 语言包, 安装完成之后需要去 config/app.php 中修改 '
+      locale' => 'zh_CN', 你还可以在 lang/zh_CN 目录下修改语言包中的内容
