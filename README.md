@@ -80,10 +80,10 @@ This is a simple blog application built with Laravel 9.1
     - 在 signup 开发完成今天的功能之后
     - !!! git add .
     - !!! git commit -m "提交信息"
-    - git checkout main 切换到主分支
-    - git merge signup 合并 signup 分支到主(main)分支
-    - git push origin main 推送到远程仓库, 或者 git push
     - php artisan migrate:refresh 重置数据库(注意: 这个命令会删除数据库中的所有数据, 所以请谨慎使用,
       我们这个地方使用是因为我们需要重置掉数据库中的测试数据)
     - composer require overtrue/laravel-lang:~6.0 安装 Laravel 语言包, 安装完成之后需要去 config/app.php 中修改 '
       locale' => 'zh_CN', 你还可以在 lang/zh_CN 目录下修改语言包中的内容
+    - git checkout main 切换到主分支
+    - git merge signup 合并 signup 分支到主(main)分支
+    - git push origin main 推送到远程仓库, 或者 git push
