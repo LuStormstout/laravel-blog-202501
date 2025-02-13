@@ -60,3 +60,15 @@ This is a simple blog application built with Laravel 9.1
     - Node.js: https://nodejs.org/en/
     - MacOS # Download and install Node.js: brew install node@22
     - Yarn: https://classic.yarnpkg.com/lang/en/docs/install
+
+### 2.13
+
+- 今天运行的命令
+  - git checkout main 切换到主分支(你们的有可能是 master 分支)
+  - git checkout -b modeling-users 创建并切换 modeling-users 分支
+  - php artisan migrate 创建数据库表(在运行这个命令之前, 请确保你的 .env 文件中配置了数据库连接信息, 并且数据库已经创建)
+  - php artisan tinker 进入 tinker 环境
+    - App\Models\User::create(['name' => '用户名', 'email' => '邮箱地址', 'password' => bcrypt('你的密码')]);
+    - use App\Models\User
+    - User::find(1);
+    - exit 退出 tinker 环境
