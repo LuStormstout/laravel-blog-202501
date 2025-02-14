@@ -38,7 +38,7 @@ class SessionsController extends Controller
             'password' => 'required'
         ]);
 
-        if (!Auth::attempt($credentials)) {
+        if (!Auth::attempt($credentials, $request->has('remember'))) {
             session()->flash('danger', 'Sorry! Email or password invalid!');
             return redirect()->back()->withInput();
         }
