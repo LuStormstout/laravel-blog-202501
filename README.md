@@ -87,3 +87,10 @@ This is a simple blog application built with Laravel 9.1
     - git checkout main 切换到主分支
     - git merge signup 合并 signup 分支到主(main)分支
     - git push origin main 推送到远程仓库, 或者 git push
+
+### 2.14
+
+- 今天运行的命令
+  - git checkout main 切换到主分支
+  - git checkout -b login-logout 创建并切换到 login-logout 分支
+  - php artisan make:controller SessionsController 创建 SessionsController 控制器用于开发登录和退出功能
