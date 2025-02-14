@@ -102,4 +102,4 @@ This is a simple blog application built with Laravel 9.1
   - git merge login-logout 合并 login-logout 分支到主(main)分支
   - git push origin main 推送到远程仓库, 或者 git push
   - git checkout -b user-crud 创建并切换到 user-crud 分支, 开发用户的增删改查功能
-  - 
+  - php artisan make:policy UserPolicy 创建 UserPolicy 授权策略

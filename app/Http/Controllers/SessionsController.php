@@ -13,6 +13,13 @@ use Illuminate\Validation\ValidationException;
 
 class SessionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest', [
+            'only' => ['create']
+        ]);
+    }
+
     /**
      * Show the form for login.
      *
@@ -44,7 +51,9 @@ class SessionsController extends Controller
         }
 
         session()->flash('success', 'Welcome back!');
-        return redirect()->route('users.show', [Auth::user()]);
+        $fallback = route('users.show', Auth::user());
+        // intended() 方法可将页面重定向到上一次请求尝试访问的页面上
+        return redirect()->intended($fallback);
     }
 
     /**

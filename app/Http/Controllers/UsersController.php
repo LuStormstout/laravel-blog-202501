@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -13,6 +14,17 @@ use Illuminate\Validation\ValidationException;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['show', 'create', 'store']
+        ]);
+
+        $this->middleware('guest', [
+            'only' => ['create']
+        ]);
+    }
+
     /**
      * Show the form for signup.
      *
@@ -65,9 +77,11 @@ class UsersController extends Controller
      *
      * @param User $user
      * @return Application|Factory|View
+     * @throws AuthorizationException
      */
     public function edit(User $user): Factory|View|Application
     {
+        $this->authorize('update', $user);
         return view('users.edit', compact('user'));
     }
 
@@ -78,9 +92,11 @@ class UsersController extends Controller
      * @param Request $request
      * @return RedirectResponse
      * @throws ValidationException
+     * @throws AuthorizationException
      */
     public function update(User $user, Request $request): RedirectResponse
     {
+        $this->authorize('update', $user);
         $this->validate($request, [
             'name' => 'required|max:50',
             'password' => 'nullable|confirmed|min:6'
