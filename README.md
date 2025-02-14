@@ -111,3 +111,9 @@ This is a simple blog application built with Laravel 9.1
     - php artisan migrate:refresh --seed 重置数据库并填充用户数据, 这个命令等同于 php artisan migrate:refresh 和 php
       artisan db:seed 的组合
     - 执行了上面的这个就不需要运行了 php artisan db:seed --class=UsersTableSeeder 执行单个 Seeder 文件
+    - ... 记得要在你们的开发分支中执行 git add . 和 git commit -m "提交信息"
+    - git checkout main 切换到主分支
+    - git merge user-crud 合并 user-crud 分支到主(main)分支
+    - git push origin main 推送到远程仓库, 或者 git push
+
+- ⚠️ 我们讲到删除用户功能了, 因为删除用户会涉及到管理员的问题, 所以我们留在下周一讲解!!!
