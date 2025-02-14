@@ -91,15 +91,23 @@ This is a simple blog application built with Laravel 9.1
 ### 2.14
 
 - 今天运行的命令
-  - git checkout main 切换到主分支
-  - git checkout -b login-logout 创建并切换到 login-logout 分支
-  - php artisan make:controller SessionsController 创建 SessionsController 控制器用于开发登录和退出功能
-  - ... 每个小功能开发完成之后要提交代码
-  - git add .
-  - git commit -m "提交信息"
-  - 开发完登录和退出功能以及「记住我」之后, 将代码合并到主分支
-  - git checkout main 切换到主分支
-  - git merge login-logout 合并 login-logout 分支到主(main)分支
-  - git push origin main 推送到远程仓库, 或者 git push
-  - git checkout -b user-crud 创建并切换到 user-crud 分支, 开发用户的增删改查功能
-  - php artisan make:policy UserPolicy 创建 UserPolicy 授权策略
+    - git checkout main 切换到主分支
+    - git checkout -b login-logout 创建并切换到 login-logout 分支
+    - php artisan make:controller SessionsController 创建 SessionsController 控制器用于开发登录和退出功能
+    - ... 每个小功能开发完成之后要提交代码
+    - git add .
+    - git commit -m "提交信息"
+    - 开发完登录和退出功能以及「记住我」之后, 将代码合并到主分支
+    - git checkout main 切换到主分支
+    - git merge login-logout 合并 login-logout 分支到主(main)分支
+    - git push origin main 推送到远程仓库, 或者 git push
+    - git checkout -b user-crud 创建并切换到 user-crud 分支, 开发用户的增删改查功能
+    - php artisan make:policy UserPolicy 创建 UserPolicy 授权策略
+    - php artisan make:seeder UsersTableSeeder 创建 UsersTableSeeder 填充用户数据
+    - 如果你检查你的数据库中的 users 表的 AUTO_INCREMENT 不是从 1 开始的那就可以去执行 ALTER TABLE `users`
+      AUTO_INCREMENT = 1; 重置 users 表的自增 ID 为 1
+    - php artisan migrate:refresh 重置数据库
+    - php artisan db:seed 填充用户数据
+    - php artisan migrate:refresh --seed 重置数据库并填充用户数据, 这个命令等同于 php artisan migrate:refresh 和 php
+      artisan db:seed 的组合
+    - 执行了上面的这个就不需要运行了 php artisan db:seed --class=UsersTableSeeder 执行单个 Seeder 文件

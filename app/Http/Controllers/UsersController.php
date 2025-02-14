@@ -16,13 +16,26 @@ class UsersController extends Controller
 {
     public function __construct()
     {
+        // 除了 show、create、store、index 方法，其他方法都需要登录
         $this->middleware('auth', [
-            'except' => ['show', 'create', 'store']
+            'except' => ['show', 'create', 'store', 'index']
         ]);
 
+        // 只允许未登录用户访问注册页面, 即 create 方法
         $this->middleware('guest', [
             'only' => ['create']
         ]);
+    }
+
+    /**
+     * Show all users.
+     *
+     * @return Factory|View|Application
+     */
+    public function index(): Factory|View|Application
+    {
+        $users = User::all();
+        return view('users.index', compact('users'));
     }
 
     /**
