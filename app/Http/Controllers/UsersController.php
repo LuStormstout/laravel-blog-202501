@@ -8,8 +8,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
-use mysql_xdevapi\Exception;
 
 class UsersController extends Controller
 {
@@ -55,6 +55,7 @@ class UsersController extends Controller
             'password' => bcrypt($request->password)
         ]);
 
+        Auth::login($user);
         session()->flash('success', 'Congratulations on your successful registration!');
         return redirect()->route('users.show', [$user]);
     }
