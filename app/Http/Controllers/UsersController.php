@@ -59,4 +59,41 @@ class UsersController extends Controller
         session()->flash('success', 'Congratulations on your successful registration!');
         return redirect()->route('users.show', [$user]);
     }
+
+    /**
+     * Show the form for editing user information.
+     *
+     * @param User $user
+     * @return Application|Factory|View
+     */
+    public function edit(User $user): Factory|View|Application
+    {
+        return view('users.edit', compact('user'));
+    }
+
+    /**
+     * Update user information.
+     *
+     * @param User $user
+     * @param Request $request
+     * @return RedirectResponse
+     * @throws ValidationException
+     */
+    public function update(User $user, Request $request): RedirectResponse
+    {
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            'password' => 'nullable|confirmed|min:6'
+        ]);
+
+        $data = [];
+        $data['name'] = $request->name;
+        if ($request->password) {
+            $data['password'] = bcrypt($request->password);
+        }
+        $user->update($data);
+
+        session()->flash('success', 'Update user information successful!');
+        return redirect()->route('users.show', $user);
+    }
 }

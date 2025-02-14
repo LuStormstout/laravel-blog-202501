@@ -94,3 +94,12 @@ This is a simple blog application built with Laravel 9.1
   - git checkout main 切换到主分支
   - git checkout -b login-logout 创建并切换到 login-logout 分支
   - php artisan make:controller SessionsController 创建 SessionsController 控制器用于开发登录和退出功能
+  - ... 每个小功能开发完成之后要提交代码
+  - git add .
+  - git commit -m "提交信息"
+  - 开发完登录和退出功能以及「记住我」之后, 将代码合并到主分支
+  - git checkout main 切换到主分支
+  - git merge login-logout 合并 login-logout 分支到主(main)分支
+  - git push origin main 推送到远程仓库, 或者 git push
+  - git checkout -b user-crud 创建并切换到 user-crud 分支, 开发用户的增删改查功能
+  - 
