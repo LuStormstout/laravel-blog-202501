@@ -7,6 +7,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
@@ -44,5 +45,17 @@ class SessionsController extends Controller
 
         session()->flash('success', 'Welcome back!');
         return redirect()->route('users.show', [Auth::user()]);
+    }
+
+    /**
+     * Destroy a session. (Logout)
+     *
+     * @return Redirector|Application|RedirectResponse
+     */
+    public function destroy(): Redirector|Application|RedirectResponse
+    {
+        Auth::logout();
+        session()->flash('success', 'You have successfully logged out!');
+        return redirect('login');
     }
 }
