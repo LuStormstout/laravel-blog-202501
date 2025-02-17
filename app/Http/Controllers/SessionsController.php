@@ -50,6 +50,11 @@ class SessionsController extends Controller
             return redirect()->back()->withInput();
         }
 
+        if (!Auth::user()->activated) {
+            session()->flash('warning', 'You have not activated your account yet. Please check your email for the activation link.');
+            return redirect('/');
+        }
+
         session()->flash('success', 'Welcome back!');
         $fallback = route('users.show', Auth::user());
         // intended() 方法可将页面重定向到上一次请求尝试访问的页面上

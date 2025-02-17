@@ -131,3 +131,12 @@ This is a simple blog application built with Laravel 9.1
     - git checkout main 切换到主分支
     - git merge user-crud 合并 user-crud 分支到主(main)分支
     - git push origin main 推送到远程仓库, 或者 git push
+    - git checkout -b account-activation-password-reset 创建并切换到 account-activation-password-reset 分支
+    - php artisan make:migration add_activation_to_users_table --table=users 创建一个迁移文件用于添加 activation 字段到
+      users 表
+    - php artisan migrate 执行迁移(在编辑完成了迁移文件之后)
+    - php artisan migrate:refresh --seed 重置数据库并填充用户数据(因修改了 UserFactory.php 文件, 所以需要重新填充数据)
+    - 我们为了方便测试, 去修改 .env 文件中的 MAIL_MAILER=smtp 为 MAIL_MAILER=log, 这样我们就可以在日志文件中查看邮件内容
+    - 测试邮件发送并且激活账号功能完成之后, 提交代码
+    - git add . 添加所有文件到暂存区
+    - git commit -m "用户激活" 提交到本地仓库
