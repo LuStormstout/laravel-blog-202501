@@ -65,4 +65,72 @@ class PasswordController extends Controller
         session()->flash('success', 'The reset email was sent successfully, please check it.');
         return redirect()->back();
     }
+
+    /**
+     * Show the form to reset the password.
+     *
+     * @param string $token
+     * @return Factory|View|Application
+     */
+    public function showResetForm(string $token): Factory|View|Application
+    {
+        return view('auth.passwords.reset', compact('token'));
+    }
+
+    /**
+     * Reset the password.
+     *
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function reset(Request $request): RedirectResponse
+    {
+        // 1、验证数据
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:8',
+            'token' => 'required',
+        ]);
+        $email = $request->email;
+        $token = $request->token;
+        $expires = 60 * 10; // 10 分钟
+
+        // 2、获取用户
+        $user = User::where('email', $email)->first();
+
+        // 3、如果用户不存在
+        if (is_null($user)) {
+            session()->flash('danger', 'Email not found.');
+            return redirect()->back()->withInput();
+        }
+
+        // 4、读取重置密码的记录
+        $record = (array)DB::table('password_resets')->where('email', $email)->first();
+
+        // 5、记录存在
+        if ($record) {
+            // 5.1、检查是否过期
+            if (Carbon::parse($record['created_at'])->addSeconds($expires)->isPast()) {
+                session()->flash('danger', 'The reset link has expired.');
+                return redirect()->back();
+            }
+
+            // 5.2、检查 Token 是否正确
+            if (!hash_equals($record['token'], $token)) {
+                session()->flash('danger', 'The reset link is incorrect.');
+                return redirect()->back();
+            }
+
+            // 5.3、更新用户密码
+            $user->update(['password' => bcrypt($request->password)]);
+
+            // 5.4、提示用户更新成功
+            session()->flash('success', 'Password reset successfully, please login with the new password.');
+            return redirect()->route('login');
+        }
+
+        // 6、记录不存在
+        session()->flash('danger', 'The reset link is incorrect.');
+        return redirect()->back();
+    }
 }

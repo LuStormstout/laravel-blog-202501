@@ -118,6 +118,12 @@ This is a simple blog application built with Laravel 9.1
 
 ### 2.17
 
+- 今天主要完成的任务
+    - 删除用户功能, 我们需要在 users 表中添加一个 is_admin 字段, 用于判断用户是否是管理员, 只有管理员才能删除用户
+    - 用户激活功能, 我们需要在 users 表中添加一个 activation 字段, 用于判断用户是否激活, 用户注册之后, 我们会发送一封邮件给用户,
+      用户点击邮件中的链接之后, 用户的账号就会激活
+    - 发送找回密码链接, 用户忘记密码之后, 用户可以通过邮箱找回密码, 我们会发送一封邮件给用户, 用户点击邮件中的链接之后, 用户就可以重置密码
+
 - 今天运行的命令
     - git checkout main 切换到主分支
     - git checkout user-crud 切换到 user-crud 分支
@@ -143,3 +149,10 @@ This is a simple blog application built with Laravel 9.1
     - 修改 .env 文件中的 MAIL_FROM_ADDRESS 和 MAIL_FROM_NAME 为你的邮箱地址和你的名字
     - git add . 添加所有文件到暂存区
     - git commit -m "发送找回密码链接" 提交到本地仓库
+    - 为了验证重置密码是否过期的正确性, 我们需要把 config/app.php 中的 timezone 修改为你的时区, 例如: 'timezone' => '
+      Asia/Tokyo'
+    - git add . 添加所有文件到暂存区
+    - git commit -m "重置密码" 提交到本地仓库
+    - git checkout main 切换到主分支
+    - git merge account-activation-password-reset 合并 account-activation-password-reset 分支到主(main)分支
+    - git push origin main 推送到远程仓库, 或者 git push
