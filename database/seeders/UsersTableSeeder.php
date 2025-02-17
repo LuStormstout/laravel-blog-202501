@@ -21,6 +21,7 @@ class UsersTableSeeder extends Seeder
         $user->name = 'LuStormstout';
         $user->email = 'lustormstout@gmail.com';
         $user->password = bcrypt('123456');
+        $user->is_admin = true; // 指定用户 ID 为 1 的用户为管理员
         $user->save();
     }
 }

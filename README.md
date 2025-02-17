@@ -111,3 +111,14 @@ This is a simple blog application built with Laravel 9.1
     - php artisan migrate:refresh --seed 重置数据库并填充用户数据, 这个命令等同于 php artisan migrate:refresh 和 php
       artisan db:seed 的组合
     - 执行了上面的这个就不需要运行了 php artisan db:seed --class=UsersTableSeeder 执行单个 Seeder 文件
+
+### 2.17
+
+- 今天运行的命令
+    - git checkout main 切换到主分支
+    - git checkout user-crud 切换到 user-crud 分支
+    - php artisan make:migration add_is_admin_to_users_table --table=users 创建一个迁移文件用于添加 is_admin 字段到
+      users 表
+    - php artisan migrate 执行迁移(在编辑完成了迁移文件之后)
+    - php artisan migrate:refresh --seed 重置数据库并填充用户数据(因为我们修改了 UsersTableSeeder.php 文件,
+      所以需要重新填充数据)
