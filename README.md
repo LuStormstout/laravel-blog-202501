@@ -140,3 +140,6 @@ This is a simple blog application built with Laravel 9.1
     - 测试邮件发送并且激活账号功能完成之后, 提交代码
     - git add . 添加所有文件到暂存区
     - git commit -m "用户激活" 提交到本地仓库
+    - 修改 .env 文件中的 MAIL_FROM_ADDRESS 和 MAIL_FROM_NAME 为你的邮箱地址和你的名字
+    - git add . 添加所有文件到暂存区
+    - git commit -m "发送找回密码链接" 提交到本地仓库
