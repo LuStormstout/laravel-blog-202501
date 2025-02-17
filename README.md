@@ -116,4 +116,18 @@ This is a simple blog application built with Laravel 9.1
     - git merge user-crud 合并 user-crud 分支到主(main)分支
     - git push origin main 推送到远程仓库, 或者 git push
 
-- ⚠️ 我们讲到删除用户功能了, 因为删除用户会涉及到管理员的问题, 所以我们留在下周一讲解!!!
+### 2.17
+
+- 今天运行的命令
+    - git checkout main 切换到主分支
+    - git checkout user-crud 切换到 user-crud 分支
+    - php artisan make:migration add_is_admin_to_users_table --table=users 创建一个迁移文件用于添加 is_admin 字段到
+      users 表
+    - php artisan migrate 执行迁移(在编辑完成了迁移文件之后)
+    - php artisan migrate:refresh --seed 重置数据库并填充用户数据(因为我们修改了 UsersTableSeeder.php 文件,
+      所以需要重新填充数据)
+    - git add . 添加所有文件到暂存区
+    - git commit -m "管理员可以删除用户" 提交到本地仓库
+    - git checkout main 切换到主分支
+    - git merge user-crud 合并 user-crud 分支到主(main)分支
+    - git push origin main 推送到远程仓库, 或者 git push

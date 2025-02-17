@@ -125,4 +125,19 @@ class UsersController extends Controller
         session()->flash('success', 'Update user information successful!');
         return redirect()->route('users.show', $user);
     }
+
+    /**
+     * Delete user.
+     *
+     * @param User $user
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function destroy(User $user): RedirectResponse
+    {
+        $this->authorize('destroy', $user);
+        $user->delete();
+        session()->flash('success', 'Successfully deleted user!');
+        return back();
+    }
 }
