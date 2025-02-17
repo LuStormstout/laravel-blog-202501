@@ -122,3 +122,8 @@ This is a simple blog application built with Laravel 9.1
     - php artisan migrate 执行迁移(在编辑完成了迁移文件之后)
     - php artisan migrate:refresh --seed 重置数据库并填充用户数据(因为我们修改了 UsersTableSeeder.php 文件,
       所以需要重新填充数据)
+    - git add . 添加所有文件到暂存区
+    - git commit -m "管理员可以删除用户" 提交到本地仓库
+    - git checkout main 切换到主分支
+    - git merge user-crud 合并 user-crud 分支到主(main)分支
+    - git push origin main 推送到远程仓库, 或者 git push
