@@ -177,4 +177,8 @@ This is a simple blog application built with Laravel 9.1
             - MAIL_FROM_NAME="${APP_NAME}"
 
 - 今天运行的命令
-  - 
+  - git checkout main 切换到主分支
+  - git checkout -b user-statuses 创建并切换到 user-statuses 分支
+  - php artisan make:migration create_statuses_table --create='statuses' 创建一个迁移文件用于创建 statuses 表
+  - php artisan migrate 执行迁移(在编辑完成了迁移文件之后)
+  - php artisan make:model Status 创建一个模型用于操作 statuses 表
