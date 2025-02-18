@@ -23,6 +23,13 @@ class Status extends Model
     /**
      * The attributes that are mass assignable.
      *
+     * @var array
+     */
+    protected $fillable = ['content'];
+
+    /**
+     * The attributes that are mass assignable.
+     *
      * @return BelongsTo
      */
     public function user(): BelongsTo
