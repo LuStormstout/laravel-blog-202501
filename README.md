@@ -122,7 +122,8 @@ This is a simple blog application built with Laravel 9.1
     - 删除用户功能, 我们需要在 users 表中添加一个 is_admin 字段, 用于判断用户是否是管理员, 只有管理员才能删除用户
     - 用户激活功能, 我们需要在 users 表中添加一个 activation 字段, 用于判断用户是否激活, 用户注册之后, 我们会发送一封邮件给用户,
       用户点击邮件中的链接之后, 用户的账号就会激活
-    - 发送找回密码链接, 用户忘记密码之后, 用户可以通过邮箱找回密码, 我们会发送一封邮件给用户, 用户点击邮件中的链接之后, 用户就可以重置密码
+    - 发送找回密码链接, 用户忘记密码之后, 用户可以通过邮箱找回密码, 我们会发送一封邮件给用户, 用户点击邮件中的链接之后,
+      用户就可以重置密码
 
 - 今天运行的命令
     - git checkout main 切换到主分支
@@ -156,3 +157,24 @@ This is a simple blog application built with Laravel 9.1
     - git checkout main 切换到主分支
     - git merge account-activation-password-reset 合并 account-activation-password-reset 分支到主(main)分支
     - git push origin main 推送到远程仓库, 或者 git push
+
+### 2.18
+
+- 今天主要完成的任务
+    - 请求限流
+    - 使用 Gmail 发送邮件
+        - 去 Google 的安全性页面: https://myaccount.google.com/security-checkup/1
+        - 开启两步验证
+        - 生成应用专用密码 https://myaccount.google.com/apppasswords
+        - 在 .env 文件中配置邮箱信息
+        - MAIL_DRIVER=SMTP
+        - MAIL_HOST=smtp.gmail.com
+        - MAIL_PORT=587
+        - MAIL_USERNAME=你的邮箱地址
+        - MAIL_PASSWORD=你的应用专用密码
+        - MAIL_ENCRYPTION=tls
+        - MAIL_FROM_ADDRESS="noreply@换成你自己的域名" // 这个地址有些邮箱会被拦截, 如果发送邮件失败, 请换成你的邮箱地址尝试
+        - MAIL_FROM_NAME="${APP_NAME}"
+
+- 今天运行的命令
+  - 
