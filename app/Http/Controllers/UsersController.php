@@ -26,6 +26,11 @@ class UsersController extends Controller
         $this->middleware('guest', [
             'only' => ['create']
         ]);
+
+        // 使用 throttle 中间件对注册请求进行限制，throttle:10,60 表示 60 分钟内最多只能进行 10 次请求
+        $this->middleware('throttle:10,60', [
+            'only' => ['store']
+        ]);
     }
 
     /**

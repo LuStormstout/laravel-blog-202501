@@ -16,6 +16,14 @@ use Illuminate\Support\Str;
 class PasswordController extends Controller
 {
 
+    public function __construct()
+    {
+        // 使用 throttle 中间件来限制发送密码重置邮件的频率, throttle:3,10 表示十分钟内最多只能发送三封邮件
+        $this->middleware('throttle:3,10', [
+            'only' => ['sendResetLinkEmail']
+        ]);
+    }
+
     /**
      * Show the form to request a password reset link.
      *
