@@ -167,14 +167,14 @@ This is a simple blog application built with Laravel 9.1
         - 开启两步验证
         - 生成应用专用密码 https://myaccount.google.com/apppasswords
         - 在 .env 文件中配置邮箱信息
-        - MAIL_DRIVER=SMTP
-        - MAIL_HOST=smtp.gmail.com
-        - MAIL_PORT=587
-        - MAIL_USERNAME=你的邮箱地址
-        - MAIL_PASSWORD=你的应用专用密码
-        - MAIL_ENCRYPTION=tls
-        - MAIL_FROM_ADDRESS="noreply@换成你自己的域名" // 这个地址有些邮箱会被拦截, 如果发送邮件失败, 请换成你的邮箱地址尝试
-        - MAIL_FROM_NAME="${APP_NAME}"
+            - MAIL_DRIVER=SMTP
+            - MAIL_HOST=smtp.gmail.com
+            - MAIL_PORT=587
+            - MAIL_USERNAME=你的邮箱地址
+            - MAIL_PASSWORD=你的应用专用密码
+            - MAIL_ENCRYPTION=tls
+            - MAIL_FROM_ADDRESS="noreply@换成你自己的域名" // 这个地址有些邮箱会被拦截, 如果发送邮件失败, 请换成你的邮箱地址尝试
+            - MAIL_FROM_NAME="${APP_NAME}"
 
 - 今天运行的命令
   - 
