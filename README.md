@@ -182,3 +182,7 @@ This is a simple blog application built with Laravel 9.1
   - php artisan make:migration create_statuses_table --create='statuses' 创建一个迁移文件用于创建 statuses 表
   - php artisan migrate 执行迁移(在编辑完成了迁移文件之后)
   - php artisan make:model Status 创建一个模型用于操作 statuses 表
+  - php artisan make:factory StatusFactory 创建一个工厂用于填充 statuses 表
+  - php artisan make:seeder StatusesTableSeeder 创建一个填充 statuses 表的 Seeder 文件
+  - php artisan migrate:refresh --seed 重置数据库并填充用户数据(因为我们修改了 StatusesTableSeeder.php 文件,
+    所以需要重新填充数据)
