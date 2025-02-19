@@ -200,4 +200,4 @@ This is a simple blog application built with Laravel 9.1
     - php artisan make:seeder FollowersTableSeeder 创建一个填充 followers 表的 Seeder 文件
     - php artisan migrate:refresh --seed 重置数据库并填充用户数据(因为我们修改了 FollowersTableSeeder.php 文件,
       所以需要重新填充数据)
-    - 
+    - php artisan make:controller FollowersController 创建一个控制器用于操作 followers 表
