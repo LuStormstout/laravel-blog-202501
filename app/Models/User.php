@@ -97,9 +97,15 @@ class User extends Authenticatable
         return $this->hasMany(Status::class);
     }
 
-    public function feed(): HasMany
+    /**
+     * 获取用户的微博动态流, 包括本人和所关注用户的动态
+     */
+    public function feed()
     {
-        return $this->statuses()
+        $user_ids = $this->followings->pluck('id')->toArray();
+        $user_ids[] = $this->id;
+        return Status::whereIn('user_id', $user_ids)
+            ->with('user')
             ->orderBy('created_at', 'desc');
     }
 
