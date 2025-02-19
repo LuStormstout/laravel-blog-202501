@@ -135,8 +135,10 @@ class User extends Authenticatable
         }
 
         // attach() 在中间表中插入数据
-        // sync() 在中间表中插入数据
+        // sync() 同步中间表中的数据和传入的数据
         // detach() 在中间表中删除数据
+        // student 表, course 表, student_course 表, 处理 student_course 表
+        // 在我们这个地方, users 表, users 表, followers 表, 处理 followers 表
 
         $this->followings()->sync($user_ids, false);
     }
