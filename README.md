@@ -197,3 +197,7 @@ This is a simple blog application built with Laravel 9.1
     - git checkout -b following-users 创建并切换到 following-users 分支
     - php artisan make:migration create_followers_table --create='followers' 创建一个迁移文件用于创建 followers 表
     - php artisan migrate 执行迁移(在编辑完成了迁移文件之后)
+    - php artisan make:seeder FollowersTableSeeder 创建一个填充 followers 表的 Seeder 文件
+    - php artisan migrate:refresh --seed 重置数据库并填充用户数据(因为我们修改了 FollowersTableSeeder.php 文件,
+      所以需要重新填充数据)
+    - 
