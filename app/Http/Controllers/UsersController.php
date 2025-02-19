@@ -183,4 +183,32 @@ class UsersController extends Controller
         session()->flash('success', 'Congratulations, activation successful.');
         return redirect()->route('users.show', [$user]);
     }
+
+    /**
+     * Show user followings.
+     *
+     * @param User $user
+     * @return Application|Factory|View
+     */
+    public function followings(User $user): Factory|View|Application
+    {
+        $users = $user->followings()->paginate(30);
+        $title = $user->name . '关注的人';
+
+        return view('users.show_follow', compact('users', 'title'));
+    }
+
+    /**
+     * Show user followers.
+     *
+     * @param User $user
+     * @return Application|Factory|View
+     */
+    public function followers(User $user): Factory|View|Application
+    {
+        $users = $user->followers()->paginate(30);
+        $title = $user->name . '的粉丝';
+
+        return view('users.show_follow', compact('users', 'title'));
+    }
 }
