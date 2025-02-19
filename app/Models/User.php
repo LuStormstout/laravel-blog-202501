@@ -138,7 +138,6 @@ class User extends Authenticatable
         // sync() 在中间表中插入数据
         // detach() 在中间表中删除数据
 
-        $this->followings()->attach($user_ids);
         $this->followings()->sync($user_ids, false);
     }
 
