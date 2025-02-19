@@ -191,5 +191,9 @@ This is a simple blog application built with Laravel 9.1
 ### 2.19
 
 - 今天运行的命令
-    - git checkout user-statuses 切换到 user-statuses 分支 
+    - git checkout user-statuses 切换到 user-statuses 分支
     - php artisan make:policy StatusPolicy 创建一个授权策略用于控制用户发布和删除动态的权限
+    - 完成前面的开发之后, 提交代码, 然后合并到主分支, 并推送到远程仓库
+    - git checkout -b following-users 创建并切换到 following-users 分支
+    - php artisan make:migration create_followers_table --create='followers' 创建一个迁移文件用于创建 followers 表
+    - php artisan migrate 执行迁移(在编辑完成了迁移文件之后)

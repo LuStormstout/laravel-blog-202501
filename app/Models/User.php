@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -100,5 +101,70 @@ class User extends Authenticatable
     {
         return $this->statuses()
             ->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * The user has many followers.
+     *
+     * @return BelongsToMany
+     */
+    public function followers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');
+    }
+
+    /**
+     * The user has many followings.
+     *
+     * @return BelongsToMany
+     */
+    public function followings(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id');
+    }
+
+    /**
+     * Follow a user.
+     *
+     * @param $user_ids
+     */
+    public function follow($user_ids): void
+    {
+        if (!is_array($user_ids)) {
+            $user_ids = compact('user_ids');
+        }
+
+        // attach() 在中间表中插入数据
+        // sync() 在中间表中插入数据
+        // detach() 在中间表中删除数据
+
+        $this->followings()->attach($user_ids);
+        $this->followings()->sync($user_ids, false);
+    }
+
+    /**
+     * Unfollow a user.
+     *
+     * @param $user_ids
+     */
+    public function unfollow($user_ids): void
+    {
+        if (!is_array($user_ids)) {
+            $user_ids = compact('user_ids');
+        }
+
+        $this->followings()->detach($user_ids);
+    }
+
+    /**
+     * Determine if the current user is following the given user.
+     *
+     * @param $user_id
+     * @return bool
+     */
+    public function isFollowing($user_id): bool
+    {
+        // contains() 判断集合中是否包含给定的键
+        return $this->followings->contains($user_id);
     }
 }
