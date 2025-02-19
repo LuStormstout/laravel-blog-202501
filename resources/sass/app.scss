@@ -47,10 +47,12 @@ section.user_info {
     padding-bottom: 10px;
     margin-top: 20px;
     text-align: center;
+
     .gravatar {
         float: none;
         max-width: 70px;
     }
+
     h1 {
         font-size: 1.4em;
         letter-spacing: -1px;
@@ -68,8 +70,14 @@ section.user_info {
 .gravatar_edit {
     margin: 15px auto;
     text-align: center;
+
     .gravatar {
         float: none;
         max-width: 100px;
     }
+}
+
+// Status delete button.
+.status-delete-btn {
+    width: max-content;
 }

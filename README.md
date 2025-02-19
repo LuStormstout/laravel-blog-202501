@@ -187,3 +187,9 @@ This is a simple blog application built with Laravel 9.1
     - php artisan migrate:refresh --seed 重置数据库并填充用户数据(因为我们修改了 StatusesTableSeeder.php 文件,
       所以需要重新填充数据)
     - php artisan make:controller StatusesController 创建一个控制器用于操作 statuses 表
+
+### 2.19
+
+- 今天运行的命令
+    - git checkout user-statuses 切换到 user-statuses 分支 
+    - php artisan make:policy StatusPolicy 创建一个授权策略用于控制用户发布和删除动态的权限

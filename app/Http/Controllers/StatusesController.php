@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Status;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,6 +11,10 @@ use Illuminate\Validation\ValidationException;
 
 class StatusesController extends Controller
 {
+
+    /**
+     * StatusesController constructor.
+     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -32,6 +38,22 @@ class StatusesController extends Controller
         ]);
 
         session()->flash('success', 'Published successfully!');
+        return redirect()->back();
+    }
+
+    /**
+     * Delete status.
+     *
+     * @param Status $status
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function destroy(Status $status): RedirectResponse
+    {
+        $this->authorize('destroy', $status);
+        $status->delete();
+
+        session()->flash('success', 'Deleted successfully!');
         return redirect()->back();
     }
 }
